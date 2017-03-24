@@ -7,11 +7,10 @@ class MTString
 {
 private:
     bool flag = false;
-public:
-    MTString();
     char s[MAX_LENGTH];
     int length = 0;
-
+public:
+    MTString();
     bool set(char *);
     /*
      * to set the private s[] as a new char*
@@ -46,6 +45,11 @@ public:
     bool isPalindrome();
     /*
      * to judge if s[] is a palindrome
+     */
+
+    bool mtManacher(char * m, int m_length);
+    /*
+     * to get the longest palindrome son string of s[] and put into m[]
      */
 };
 

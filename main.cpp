@@ -47,10 +47,20 @@ int main(int argc, char *argv[])
 //        system("pause");
 
 //        ** test for isPalindrome **
-        char testT[100];
-        cin >> testT;
-        s->set(testT);
-        s->isPalindrome();
+//        char testT[100];
+//        cin >> testT;
+//        s->set(testT);
+//        s->isPalindrome();
+
+//        ** test for mtManacher **
+//        char testT[100];
+//        cin >> testT;
+//        s->set(testT);
+//        char testM[100];
+//        s->mtManacher(testM, sizeof(testM) / sizeof(int));
+//        cout << testM << endl;
+
+
     }
 
     return a.exec();

@@ -4,7 +4,9 @@
 #include <memory.h>
 #include <algorithm>
 
-#define MAX_LENGTH 1024
+#define MAX_LENGTH  1024
+#define Min(a, b)   a < b ? a : b
+#define Max(a, b)   a > b ? a : b
 
 using namespace::std;
 
@@ -208,6 +210,72 @@ bool MTString::isPalindrome() {
             right--;
         }
         cout << "\"" << s << "\" is a palindrome. \n";
+        return true;
+    }
+}
+
+/*
+ * find the longest palindrome of s[]
+ * time complexity  : O(N)
+ * space complexity : O(N)
+ */
+bool MTString::mtManacher(char *m, int m_length) {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        int mx = 0;
+        int id;
+        int longestMX = 0;
+        int longestID = 0;
+        int P[MAX_LENGTH << 1];
+        char S[MAX_LENGTH << 1];
+        memset(P, 0, sizeof(P));
+        memset(S, 0, sizeof(S));
+        S[0] = '$';
+        for (int i = 1; i <= (length * 2) + 1; i++) {
+            if (i % 2 == 1)
+                S[i] = '#';
+            else
+                S[i] = s[(i / 2) - 1];
+        } // set S[] and P[]
+
+//        cout << "s[] is " << s << " and length is "<< length << endl;
+//        cout << "S[] is " << S << endl;
+
+        for (int i = 0; i < ((length + 1) * 2); i++) {
+            if (mx > i)
+                P[i] = Min(P[2 * id - 1], mx - i);
+            else
+                P[i] = 1;
+            while (S[i + P[i]] == S[i - P[i]])
+                P[i]++;
+            if (P[i] + i > mx) {
+                mx = P[i] + i;
+                id = i;
+            }
+            if (mx - id > longestMX - longestID) {
+                longestMX = mx;
+                longestID = id;
+            }
+        } // Manacher algorithm
+
+//        for (int i = 0; P[i] != 0; i++) {
+//            cout << P[i];
+//        }
+//        cout << endl;
+//        cout << "mx = " << mx << " and id = " << id << endl;
+//        cout << "longestMX = " << longestMX << " and longsetID = " << longestID << endl;
+
+        memset(m, 0, m_length);
+        int p = 0;
+        for (int i = 2 * longestID - longestMX + 1; i < longestMX; i++) {
+            if (i % 2 == 0)
+                m[p++] = S[i];
+        }
+        cout << "The longest palidrome is " << m << '.' <<endl;
+
         return true;
     }
 }
