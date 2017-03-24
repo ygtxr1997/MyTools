@@ -45,6 +45,12 @@ int main(int argc, char *argv[])
 //        ** test for allPermutation **
 //        s->allPermutation();
 //        system("pause");
+
+//        ** test for isPalindrome **
+        char testT[100];
+        cin >> testT;
+        s->set(testT);
+        s->isPalindrome();
     }
 
     return a.exec();

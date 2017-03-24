@@ -42,6 +42,11 @@ public:
     /*
      * to print all the permutations of s[] in dictionary order
      */
+
+    bool isPalindrome();
+    /*
+     * to judge if s[] is a palindrome
+     */
 };
 
 #endif // MTTEST_H

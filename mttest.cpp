@@ -184,3 +184,30 @@ bool MTString::allPermutation(){
         return true;
     }
 }
+
+/*
+ * judge if s[] is a palindrome
+ * time complexity  : O(N)
+ * space complexity : O(1)
+ */
+bool MTString::isPalindrome() {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        char * left, * right;
+        left = s;
+        right = s + length - 1;
+        while (left < right) {
+            if (*left != *right) {
+                cout << "\"" << s << "\" is not a palindrome. \n";
+                return false;
+            }
+            left++;
+            right--;
+        }
+        cout << "\"" << s << "\" is a palindrome. \n";
+        return true;
+    }
+}
