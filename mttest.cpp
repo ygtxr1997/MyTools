@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <memory.h>
+#include <algorithm>
 
 #define MAX_LENGTH 1024
 
@@ -51,8 +52,10 @@ void MTString::show()
 
 /*
  * reverse s[] from start to end
+ * time complexity  : O(N)
+ * space complexity : O(1)
  */
-bool MTString::reverse(int start, int end)
+bool MTString::mtReverse(int start, int end)
 {
     if (!flag) {
         cout << "The MTString is not correct ! \n";
@@ -81,8 +84,103 @@ bool MTString::reverse(int start, int end)
 
 /*
  * judge if s[] is contained by b
+ * time complexity  : O(N + M)
+ * space complexity : O(1)
  */
 bool MTString::stringContain(char * b)
 {
-    return true;
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        int hashA = 0;
+        int hashB = 0;
+        for (int i = 0; i < length; i++) {
+            hashA |= (0x1 << (int)s[i]);
+        }
+        for (int i = 0; b[i] != '\0'; i++) {
+            hashB |= (0x1 << (int)b[i]);
+        }
+        hashB = ~hashB;
+        if ((hashA & hashB) == 0) {
+            cout << "Is contained. \n";
+            return true;
+        }
+        else {
+            cout << "Is not contained. \n";
+            return false;
+        }
+    }
+}
+
+
+/*
+ * to get the next permutation of s[] and put into b
+ * time complexity  : O(N)
+ * space complexity : O(1)
+ */
+bool MTString::nextPermutation(char *b) {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        memset(b, 0, 100);
+        for (int i = 0; i < length; i++) {
+            b[i] = s[i];
+        }
+
+        // step 1
+        int i;
+        for (i = length - 2; i >= 0 && (s[i] >= s[i + 1]); i--){
+            ;
+        }
+        if (i < 0) {
+            cout << "The string \"" << s << "\" is the last permutation !\n";
+            return false;
+        }
+
+        // step 2
+        int k;
+        for (k = length - 1; k > i && (s[k] <= s[i]); k--){
+            ;
+        }
+
+        // step 3
+        swap(b[i], b[k]);
+
+        // step 4
+        reverse(b + i + 1, b + length);
+
+        return true;
+    }
+}
+
+/*
+ * to print all the permutations of s[] in dictionary order
+ * time complexity  : O(N!)
+ * space complexity : O(1)
+ */
+bool MTString::allPermutation(){
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        char temp[MAX_LENGTH];
+        memset(temp, 0, MAX_LENGTH);
+        this->show();
+        this->nextPermutation(temp);
+
+        MTString *next = new MTString;
+        next->set(temp);
+        next->show();
+
+        while (next->nextPermutation(temp)) {
+            next->set(temp);
+            next->show();
+        }
+        return true;
+    }
 }

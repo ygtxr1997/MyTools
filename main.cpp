@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     MTString *s = new MTString;
-    char testS[5] = "abcd";
+    char testS[5] = "abca";
     if (s->set(testS))
         cout << "success" << endl;
     else
@@ -18,15 +18,33 @@ int main(int argc, char *argv[])
     s->show();
 
     while (1) {
-        int i, j;
-        cin >> i >> j;
-        if (s->reverse(i, j))
-            cout << "success" << endl;
-        else
-            cout << "false" << endl;
-        s->show();
+//        ** test for reverse **
+//        int i, j;
+//        cin >> i >> j;
+//        if (s->reverse(i, j))
+//            cout << "success" << endl;
+//        else
+//            cout << "false" << endl;
+//        s->show();
 
-        cout << endl;
+//        cout << endl;
+
+
+//        ** test for stringContain **
+//        char testT[100];
+//        cin >> testT;
+//        s->stringContain(testT);
+
+//        ** test for nextPermutation **
+//        char testB[100];
+//        cin >> testB;
+//        s->nextPermutation(testB);
+//        s->set(testB);
+//        s->show();
+
+//        ** test for allPermutation **
+//        s->allPermutation();
+//        system("pause");
     }
 
     return a.exec();

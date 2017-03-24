@@ -23,7 +23,7 @@ public:
      * to show the private s[]
      */
 
-    bool reverse(int start, int end);
+    bool mtReverse(int start, int end);
     /*
      * to reverse the private s[] from start to end
      */
@@ -31,6 +31,16 @@ public:
     bool stringContain(char * b);
     /*
      * to judge if private s[] is contained by char* b
+     */
+
+    bool nextPermutation(char * b);
+    /*
+     * to get the next permutation of s[] in dictionary and put into b[]
+     */
+
+    bool allPermutation();
+    /*
+     * to print all the permutations of s[] in dictionary order
      */
 };
 
