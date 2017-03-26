@@ -279,3 +279,71 @@ bool MTString::mtManacher(char *m, int m_length) {
         return true;
     }
 }
+
+
+/*
+ * move all the char c in s[] to left
+ * time complexity  : O(N)
+ * space complexity : O(N)
+ */
+bool MTString::moveChar(char *b, char c) {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        int k = 0;
+        for (int i = 0; i < length; i++) {
+            if (s[i] == c)
+                b[k++] = c;
+        }
+        for (int i = 0; i < length; i++) {
+            if (s[i] != c)
+                b[k++] = s[i];
+        }
+        return true;
+    }
+}
+
+/*
+ * condense the duplicate parts of s[]
+ */
+bool MTString::condenseDuplicate() {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        int stack[MAX_LENGTH];
+        memset(stack, 0, sizeof(stack));
+        stack[0] = 1;
+        stack[1] = s[0];
+        int next = 1, top = 1;
+        for (; next < length; next++) {
+            if (s[next] == stack[top]) {
+                stack[top - 1]++;
+            }
+            else {
+                stack[top + 1] = 1;
+                stack[top + 2] = s[next];
+                top += 2;
+            }
+        }
+
+        for (int i = 0; i <= top; i++) {
+            if (stack[i] != 1) {
+                switch (i % 2) {
+                case 1:
+                    cout << (char)stack[i];
+                    break;
+                default:
+                    cout << stack[i];
+                    break;
+                }
+            }
+        }
+        cout << endl;
+
+        return true;
+    }
+}

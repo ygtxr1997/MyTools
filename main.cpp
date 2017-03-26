@@ -60,6 +60,19 @@ int main(int argc, char *argv[])
 //        s->mtManacher(testM, sizeof(testM) / sizeof(int));
 //        cout << testM << endl;
 
+//        ** test for moveChar **
+//        char testT[100];
+//        cin >> testT;
+//        s->set(testT);
+//        char testB[100];
+//        char c = '*';
+//        s->moveChar(testB, c);
+//        cout << testB << endl;
+
+        char testT[1000];
+        cin >> testT;
+        s->set(testT);
+        s->condenseDuplicate();
 
     }
 

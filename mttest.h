@@ -51,6 +51,16 @@ public:
     /*
      * to get the longest palindrome son string of s[] and put into m[]
      */
+
+    bool moveChar(char * b, char c);
+    /*
+     * to move all the char c in s[] to left, then put into b[]
+     */
+
+    bool condenseDuplicate();
+    /*
+     * to condense duplicate char in s[] as the type of "3a2bc4d"
+     */
 };
 
 #endif // MTTEST_H
