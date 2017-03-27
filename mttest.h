@@ -61,6 +61,35 @@ public:
     /*
      * to condense duplicate char in s[] as the type of "3a2bc4d"
      */
+
+    bool deleteChar(char * b, char * model);
+    /*
+     * to delete all the chars included in model[] then put into b[]
+     */
+};
+
+class MTArray
+{
+private:
+    int a[MAX_LENGTH];
+    int length = 0;
+    bool flag;
+public:
+    MTArray();
+    bool set(int *, int len);
+    /*
+     * to set the array a[]
+     */
+
+    void show();
+    /*
+     * to show the array a[]
+     */
+
+    bool maxSum(int b[], int & b_length);
+    /*
+     * to get the son array which sum max then put into b[]
+     */
 };
 
 #endif // MTTEST_H

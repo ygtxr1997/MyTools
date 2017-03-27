@@ -69,10 +69,47 @@ int main(int argc, char *argv[])
 //        s->moveChar(testB, c);
 //        cout << testB << endl;
 
-        char testT[1000];
-        cin >> testT;
-        s->set(testT);
-        s->condenseDuplicate();
+//        ** test for condenseDuplicate **
+//        char testT[1000];
+//        cin >> testT;
+//        s->set(testT);
+//        s->condenseDuplicate();
+
+//        ** test for deleteChar **
+//        char testT[1000];
+//        cin >> testT;
+//        s->set(testT);
+//        char testModel[1000];
+//        cin >> testModel;
+//        s->deleteChar(testT, testModel);
+//        cout << testT << endl;
+
+
+
+//        -------------^ end ^-------------
+
+//        ********** test for MTArray **********
+        int testA[100];
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            cin >> testA[i];
+        }
+        MTArray *mta = new MTArray;
+        mta->set(testA, n);
+        // mta->show();
+
+//        ** test for maxSum **
+//        int testB_length = 100;
+//        int & length = testB_length;
+//        int *testB = new int[testB_length];
+//        mta->maxSum(testB, length);
+//        for (int i = 0; i < length; i++) {
+//            cout << testB[i] << ' ';
+//        }
+//        cout << endl;
+
+
 
     }
 

@@ -307,6 +307,8 @@ bool MTString::moveChar(char *b, char c) {
 
 /*
  * condense the duplicate parts of s[]
+ * time complexity  : O(N)
+ * space complexity : O(N)
  */
 bool MTString::condenseDuplicate() {
     if (!flag) {
@@ -347,3 +349,128 @@ bool MTString::condenseDuplicate() {
         return true;
     }
 }
+
+
+/*
+ * delete the designated char in s[]
+ * time complexity  : O(N)
+ * space complexity : O(N)
+ */
+bool MTString::deleteChar(char * b, char * model) {
+    if (!flag) {
+        cout << "The MTString is not correct ! \n";
+        return false;
+    }
+    else {
+        char hash[300];
+        int i = 0;
+        memset(hash, 0, sizeof(hash));
+
+        int b_length = 0;
+        while (b[b_length] != 0) {
+            b_length++;
+        }
+        memset(b, 0, sizeof(char) * b_length);
+
+        while (model[i] != 0) {
+            hash[(int)model[i++]] = 1;
+        }
+        int k = 0;
+        for (int j = 0; j < b_length; j++) {
+            if (hash[(int)s[j]] != 1)
+                b[k++] = s[j];
+        }
+        return true;
+    }
+}
+
+
+// ----------------------^ end ^-------------------------
+
+
+
+// ********** MTArray **********
+
+MTArray::MTArray()
+{
+
+}
+
+/*
+ * initialize the array a[]
+ */
+bool MTArray::set(int * b, int len) {
+    if (len > MAX_LENGTH) {
+        cout << "Over the bound !\n";
+        return false;
+    }
+    else {
+        for (int i = 0; i < len; i++) {
+            a[i] = b[i];
+        }
+        length = len;
+        flag = true;
+        return true;
+    }
+}
+
+/*
+ * show the array a[]
+ */
+void MTArray::show() {
+    if (!flag) {
+        cout << "The array is not correct !\n";
+    }
+    else {
+        for (int i = 0; i < length; i++) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
+    }
+}
+
+/*
+ * find the max sum
+ * time complexity  : O(N)
+ * space complexity : O(N)
+ */
+bool MTArray::maxSum(int * b, int & b_length) {
+    if (!flag) {
+        cout << "The array is not correct !\n";
+        return false;
+    }
+    else {
+        int *c = new int[length];
+        int max = a[0];
+        int start = 0;
+        int end = 0;
+        int temp = 0;
+
+        c[0] = a[0];
+        for (int i = 1; i < length; i++) {
+            if (c[i - 1] > 0) {
+                c[i] = c[i - 1] + a[i];
+            }
+            else {
+                c[i] = a[i];
+                temp = i;
+            }
+
+            if (c[i] > max) {
+                start = temp;
+                end = i;
+                max = c[i];
+            }
+        }
+
+        b_length = end - start + 1;
+        memset(b, 0, sizeof(int) * b_length);
+        int k = 0;
+        for (int i = start; i <= end; i++) {
+            b[k++] = a[i];
+        }
+        return true;
+    }
+}
+
+// ----------------------^ end ^-------------------------
